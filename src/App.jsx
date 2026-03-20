@@ -1,16 +1,18 @@
-import {AuthProvider} from './providers/AuthProvider';
-import {FirebaseProvider} from './providers/FirebaseProvider';
-import {RestOfTheApp} from './components/RestOfTheApp';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import { Home} from './pages/Home';
+import  Todo from './pages/Todo';
 
-export const App = () => {
+function App() {
   return (
-    <FirebaseProvider>
-      <AuthProvider>
-        <RestOfTheApp />
-      </AuthProvider>
-    </FirebaseProvider>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} /> 
+        <Route path="Todo List" element={<Todo />} />
+      </Route>
+    </Routes>
   );
-};
+
+}
 
 export default App;
